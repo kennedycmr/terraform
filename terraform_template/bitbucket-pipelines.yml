@@ -1,0 +1,13 @@
+# bitbucket-pipelines.yml
+# Using this image as it has the gloud files so we dont have to install 
+image: gcr.io/google.com/cloudsdktool/cloud-sdk:latest
+
+pipelines:
+  branches:
+        master:
+          - step:
+              name: Deploy to Production
+              deployment: production
+              script:
+                # Deploy all resources
+                - source ${BITBUCKET_CLONE_DIR}/pipelineScripts/10-run-pipeline.sh
